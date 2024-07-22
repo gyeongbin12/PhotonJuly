@@ -1,15 +1,16 @@
 using PlayFab;
 using Photon.Pun;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 using PlayFab.ClientModels;
+
 
 public class PlayfabManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] InputField email;
     [SerializeField] InputField password;
 
-    public void Success(LoginResult result)
+    public void Success(LoginResult loginResult)
     {
         PhotonNetwork.AutomaticallySyncScene = false;
 
@@ -25,7 +26,6 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
     public void SignUp()
     {
-        // RegisterPlayFabUserRequest : 서버에 유저를 등록하기 위한 클래스
         var request = new RegisterPlayFabUserRequest
         {
             Email = email.text,
@@ -46,7 +46,7 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
         var request = new LoginWithEmailAddressRequest
         {
             Email = email.text,
-            Password = password.text,
+            Password = password.text
         };
 
         PlayFabClientAPI.LoginWithEmailAddress
@@ -57,8 +57,8 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
         );
     }
 
-    public void Failure(PlayFabError error)
+    public void Failure(PlayFabError playFabError)
     {
-        Alarm.Show(error.GenerateErrorReport(), AlarmType.Alarm);
+        Alarm.Show(playFabError.GenerateErrorReport(), AlarmType.Alarm);
     }
 }

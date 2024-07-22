@@ -23,7 +23,6 @@ public class ConnectServer : MonoBehaviourPunCallbacks
 
     public void SelectServer()
     {
-        // 서버 접속
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -34,7 +33,6 @@ public class ConnectServer : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        // JoinLobby : 특정 로비를 생성하여 진입하는 방법
         PhotonNetwork.JoinLobby
         (
             new TypedLobby
