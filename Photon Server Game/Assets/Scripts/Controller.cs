@@ -1,18 +1,26 @@
 using TMPro;
 using Photon.Pun;
 using UnityEngine;
+using Photon.Realtime;
 
-public class Controller : MonoBehaviourPun
+[RequireComponent(typeof(Rotate))]
+[RequireComponent(typeof(Move))]
+public class Controller : MonoBehaviourPunCallbacks
 {
-    [SerializeField] float speed;
-    [SerializeField] float mouseX;
+    [SerializeField] Move move;
+    [SerializeField] Rotate rotate;
 
-    [SerializeField] Vector3 direction;
-    [SerializeField] Camera temporaryCamera; 
+    [SerializeField] Camera temporaryCamera;
+
+    private void Awake()
+    {
+        move = GetComponent<Move>();
+        rotate = GetComponent<Rotate>();
+    }
 
     void Start()
     {
-        if(photonView.IsMine)
+        if (photonView.IsMine)
         {
             Camera.main.gameObject.SetActive(false);
         }
@@ -25,6 +33,22 @@ public class Controller : MonoBehaviourPun
 
     void Update()
     {
+        if (photonView.IsMine)
+        {
+            move.OnMove
+            (
+                Input.GetAxisRaw("Horizontal"),
+                0,
+                Input.GetAxisRaw("Vertical")
+            );
 
+            rotate.OnRotate(0, Input.GetAxisRaw("Mouse X"), 0);
+        }
     }
+
+    public override void OnMasterClientSwitched(Player newMasterClient)
+    {
+        PhotonNetwork.SetMasterClient(PhotonNetwork.PlayerList[0]);
+    }
+
 }

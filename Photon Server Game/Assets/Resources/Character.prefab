@@ -344,6 +344,7 @@ GameObject:
   - component: {fileID: 5253537574412478131}
   - component: {fileID: 3442163635596103874}
   - component: {fileID: 3733096804438077087}
+  - component: {fileID: 4813873556590332860}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -492,9 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2a56cd7527aad4cb65f0b06d3f4283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  mouseX: 0
-  direction: {x: 0, y: 0, z: 0}
+  move: {fileID: 0}
   temporaryCamera: {fileID: 0}
 --- !u!95 &3733096804438077087
 Animator:
@@ -517,3 +516,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4813873556590332860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022657284763308324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9e6591a0780e249a13355ff68711a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  speed: 5
