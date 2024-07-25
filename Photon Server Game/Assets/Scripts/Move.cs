@@ -16,8 +16,6 @@ public class Move : MonoBehaviour
 
         direction.Normalize();
 
-        transform.Translate(direction * speed * Time.deltaTime);
-
-        direction.y = y;
+        transform.position += transform.TransformDirection((direction) * speed * Time.deltaTime);
     }    
 }
