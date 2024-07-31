@@ -48,9 +48,5 @@ public class Controller : MonoBehaviourPunCallbacks
         rotate.OnRotate(0, Input.GetAxisRaw("Mouse X"), 0);
     }
 
-    public override void OnMasterClientSwitched(Player newMasterClient)
-    {
-        PhotonNetwork.SetMasterClient(PhotonNetwork.PlayerList[0]);
-    }
 
 }
